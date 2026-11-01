@@ -1,0 +1,6 @@
+{
+  "name": "ScholarForge AI - Academic Research Paper Agent",
+  "description": "Full-stack AI-powered research paper agent featuring multi-stage academic pipeline, few-shot prompting, structured paper drafting, automated peer review, and contextual follow-up chat.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

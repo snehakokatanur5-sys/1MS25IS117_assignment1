@@ -1,0 +1,83 @@
+{
+  "system_instruction": "You are ScholarForge AI, a lead academic research paper agent and journal peer reviewer. You operate through a 5-stage academic methodology: (1) Classification & Scope Feasibility, (2) Research Questions & Working Hypotheses, (3) Academic Outline & Structural Roadmap, (4) Structured Paper Drafting conditioned on Few-Shot demonstrations, and (5) Rigorous Double-Blind Peer Review. You strictly enforce academic register, empirical validity, and authentic scholarly citations without inventing fictitious references.",
+  "primary_model": "gemini-3.1-flash-lite",
+  "fallback_models": ["gemini-flash-latest", "gemini-3.8-flash"],
+  "retry_policy": {
+    "max_retries": 3,
+    "backoff_strategy": "Exponential backoff with random jitter (1000ms, 2000ms, 4000ms)",
+    "retryable_status_codes": [503, 429]
+  },
+  "temperature_config": "Default calibrated for academic consistency and structural coherence",
+  "multi_stage_pipeline": [
+    {
+      "stage_id": "classification",
+      "name": "Topic Classification & Scope",
+      "objective": "Discipline categorization, sub-discipline profiling, paradigm selection, audience mapping, and theoretical framework enumeration."
+    },
+    {
+      "stage_id": "research_questions",
+      "name": "Research Questions & Hypotheses",
+      "objective": "Formulating primary RQ1, secondary exploratory RQs, testable hypotheses (H1, H2), and independent/dependent variable operationalization."
+    },
+    {
+      "stage_id": "outline",
+      "name": "Structural Outline Roadmap",
+      "objective": "Hierarchical outline with focus descriptions, subsections, and analytical key points following IMRaD conventions."
+    },
+    {
+      "stage_id": "draft",
+      "name": "Few-Shot Paper Drafting",
+      "objective": "Generating full paper across 10 structured sections: Title, Abstract, Keywords, Introduction, Research Objectives, Literature Review, Methodology, Findings, Conclusion, References."
+    },
+    {
+      "stage_id": "peer_review",
+      "name": "Peer Review & Rigor Evaluation",
+      "objective": "Independent rubric evaluation (overall score 1-10, criteria scores, strengths, limitations, and ethical considerations)."
+    }
+  ],
+  "few_shot_examples": [
+    {
+      "example_id": "few_shot_1",
+      "field": "Computer Science & AI",
+      "topic": "Evaluating Demographic Bias Mitigation in Automated Candidate Screening: A Comparative Study of Counterfactual Data Augmentation and Adversarial Debiasing",
+      "sample_rq": "How does adversarial debiasing compare with counterfactual data augmentation in mitigating demographic disparity without degrading job-role classification accuracy?",
+      "expected_sections": [
+        "title",
+        "abstract",
+        "keywords",
+        "introduction",
+        "researchObjectives",
+        "literatureReview",
+        "methodology",
+        "findings",
+        "conclusion",
+        "references"
+      ]
+    },
+    {
+      "example_id": "few_shot_2",
+      "field": "Environmental & Earth Sciences",
+      "topic": "Trophic Transfer and Biomagnification of Microplastics in Estuarine Benthic Food Webs: A Mechanistic Bioaccumulation Model",
+      "sample_rq": "Does microplastic particle burden biomagnify across successive trophic levels in estuarine benthic food webs, or does egestion kinetics lead to trophic dilution?",
+      "expected_sections": [
+        "title",
+        "abstract",
+        "keywords",
+        "introduction",
+        "researchObjectives",
+        "literatureReview",
+        "methodology",
+        "findings",
+        "conclusion",
+        "references"
+      ]
+    }
+  ],
+  "sample_user_input": {
+    "topic": "Side-Channel Resistance and Hardware Complexity of Module-LWE Post-Quantum Key Encapsulation Mechanisms in Embedded IoT Processors",
+    "field": "Computer Science & AI",
+    "length": "standard",
+    "methodologyPreference": "computational_simulation",
+    "customNotes": "Focus on NIST PQC standards (ML-KEM / Kyber), power analysis vulnerabilities, and silicon area trade-offs."
+  }
+}
